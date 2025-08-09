@@ -26,7 +26,7 @@ class SimulationEngine:
             for txn in list(self.txn_mgr.active.values()):
                 if txn.state == 'ACTIVE' and not txn.blocked:
                     self.txn_mgr.submit_op(txn, self.cycle)
-                if txn.blocked:
+                elif txn.blocked:
                     txn.wait_since += 1
                     if txn.wait_since >= self.args.timeout:
                         self.txn_mgr.rollback(txn)

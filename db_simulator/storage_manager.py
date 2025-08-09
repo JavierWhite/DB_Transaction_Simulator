@@ -1,3 +1,5 @@
+import os
+
 NUM_ITEMS = 32
 DB_FILE = 'db'
 
