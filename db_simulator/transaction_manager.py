@@ -1,7 +1,6 @@
 import random
 from logger import FLUSH_THRESHOLD
 from transaction import Transaction
-from lock_manager import LockManager
 
 class TransactionManager:
     """Coordinates transaction lifecycle, logging, and operations."""
@@ -19,6 +18,7 @@ class TransactionManager:
         txn = Transaction(tid)
         self.active[tid] = txn
         self.log_mgr.record((tid, 'S'))
+        txn.history.append(('S',))
         return txn
 
     def submit_op(self, txn, current_cycle):

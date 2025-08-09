@@ -16,7 +16,7 @@ class LogManager:
     def record(self, record):
         self.writer.writerow(record)
         self.log_fp.flush()
-        if record[-1] == 'F':
+        if record and record[-1] == 'F':
             self.write_count += 1
 
     def close(self):
